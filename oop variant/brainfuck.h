@@ -6,7 +6,7 @@ class Brainfuck {
         Brainfuck(const std::string &input);
         void execute(std::string &output, bool ascii);
     private:
-        std::deque<unsigned char> cells;
+        std::deque<std::uint8_t> cells;
         std::string input;
         bool ascii;
 
