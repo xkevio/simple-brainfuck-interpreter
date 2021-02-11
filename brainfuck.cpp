@@ -8,7 +8,7 @@
 namespace Brainfuck {
 
     namespace {
-        std::array<unsigned char, 30'000> cells; 
+        std::array<std::uint8_t, 30'000> cells; 
         std::string input_;
         
         int current_index = 0;
@@ -56,7 +56,7 @@ namespace Brainfuck {
             return new_index;
         }
 
-        void op_codes(const char &cur, std::string &output, const char &ascii) {
+        void op_codes(const char &cur, std::string &output, bool ascii) {
             switch (cur)
             {
                 case '>':
@@ -80,11 +80,11 @@ namespace Brainfuck {
                     cells[current_index]--;
                     break;
                 case '.':
-                    if(ascii == 'n') {
+                    if(!ascii) {
                         output += std::to_string(cells[current_index]);
                     }
-                    if(ascii == 'y') {
-                        output += cells[current_index];
+                    else {
+                        output += char(cells[current_index]);
                     }
                     break;
                 case ',':
@@ -129,7 +129,7 @@ namespace Brainfuck {
         }
     }
 
-    void execute(const std::string &input, std::string &output, const char &ascii) {
+    void execute(const std::string &input, std::string &output, bool ascii) {
         input_ = input;
         remove_spaces(input_);
         remove_new_lines(input_);
