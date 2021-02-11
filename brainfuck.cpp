@@ -1,14 +1,14 @@
 #include "brainfuck.h"
 
-#include <array>
 #include <string>
 #include <algorithm>
 #include <iostream>
+#include <deque>
 
 namespace Brainfuck {
 
     namespace {
-        std::array<std::uint8_t, 30'000> cells; 
+        std::deque<std::uint8_t> cells(30'000, 0); 
         std::string input_;
         
         int current_index = 0;
@@ -61,14 +61,14 @@ namespace Brainfuck {
             {
                 case '>':
                     if(current_index == cells.size() - 1) {
-                        current_index = 0;
+                        cells.emplace_back(0);
                     } else {
                         current_index++;
                     }
                     break;
                 case '<':
                     if(current_index == 0) {
-                        current_index = cells.size() - 1;
+                        cells.emplace_front(0);
                     } else {
                         current_index--;
                     }
