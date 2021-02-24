@@ -2,6 +2,6 @@
 
 namespace Brainfuck {
 
-    void execute(const std::string &input, std::string &output, bool ascii);
+    void execute(const std::string& input, std::string& output, bool ascii);
 
 }

@@ -1,9 +1,9 @@
 #include "brainfuck.h"
 
-#include <string>
 #include <algorithm>
-#include <iostream>
 #include <deque>
+#include <iostream>
+#include <string>
 
 namespace Brainfuck {
 

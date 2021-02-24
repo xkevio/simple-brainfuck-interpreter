@@ -1,13 +1,12 @@
-#include "brainfuck.h"
-
 #include <iostream>
 #include <string>
 
-int main(int, char**) {
+#include "brainfuck.h"
 
+int main(int, char**) {
     std::string brainfuck_code;
     std::string output_w_ascii;
-    
+
     std::cout << "Enter your brainfuck code: " << std::endl;
     std::cin >> brainfuck_code;
 
