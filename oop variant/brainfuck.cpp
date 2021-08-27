@@ -4,8 +4,7 @@
 #include <iostream>
 #include <string>
 
-Brainfuck::Brainfuck(const std::string& input) {
-    this->input = input;
+Brainfuck::Brainfuck(const std::string& input) : input(input) {
     remove_spaces();
     remove_new_lines();
 
@@ -15,9 +14,13 @@ Brainfuck::Brainfuck(const std::string& input) {
     current_char = 0;
 }
 
-void Brainfuck::remove_spaces() { input.erase(std::remove_if(input.begin(), input.end(), ::isspace), input.end()); }
+void Brainfuck::remove_spaces() {
+    input.erase(std::remove_if(input.begin(), input.end(), ::isspace), input.end());
+}
 
-void Brainfuck::remove_new_lines() { input.erase(std::remove(input.begin(), input.end(), '\n'), input.end()); }
+void Brainfuck::remove_new_lines() {
+    input.erase(std::remove(input.begin(), input.end(), '\n'), input.end());
+}
 
 void Brainfuck::find_matching_end_bracket() {
     int expected = 0;
@@ -101,7 +104,7 @@ void Brainfuck::op_codes(const char& cur, std::string& output) {
             }
             break;
         default:
-            std::cout << "Not a valid Brainfuck program! Unknown symbol at " << current_index << std::endl;
+            std::cerr << "Not a valid Brainfuck program! Unknown symbol at " << current_index << std::endl;
             break;
     }
 }
